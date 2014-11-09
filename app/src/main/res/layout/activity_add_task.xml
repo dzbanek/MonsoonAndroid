@@ -10,6 +10,7 @@
         android:layout_height="0dp"
         android:background="#99000000"
         android:layout_weight="0.7"
+        android:id="@+id/viewDim"
         ></View>
 
     <RelativeLayout
@@ -28,8 +29,9 @@
             android:ems="10"
             android:id="@+id/editText"
             android:gravity="top"
-            android:layout_above="@+id/button"
+            android:layout_above="@+id/buttonSubmit"
             android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/base_padding"
             />
 
         <Button
@@ -39,18 +41,19 @@
             android:padding="@dimen/base_padding"
             android:textColor="@android:color/white"
             android:background="@android:color/holo_blue_light"
-            android:id="@+id/button"
+            android:id="@+id/buttonSubmit"
             android:layout_alignParentBottom="true"
             android:layout_alignRight="@+id/editText"
             android:layout_alignEnd="@+id/editText" />
 
-        <RadioGroup
+        <com.monsoonandroid.ui.ColorSelectorView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_below="@+id/editText"
             android:layout_alignParentLeft="true"
+            android:id="@+id/colorSelectorView"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/button"
-            android:layout_toStartOf="@+id/button"></RadioGroup>
+            android:layout_toLeftOf="@+id/buttonSubmit"
+            android:layout_toStartOf="@+id/buttonSubmit"/>
     </RelativeLayout>
 </LinearLayout>

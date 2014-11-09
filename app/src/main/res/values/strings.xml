@@ -6,4 +6,5 @@
 
 
     <string name="submit">Submit</string>
+    <string name="invalid_length">Invalid length</string>
 </resources>

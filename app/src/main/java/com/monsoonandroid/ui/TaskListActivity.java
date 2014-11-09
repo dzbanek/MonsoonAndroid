@@ -1,7 +1,6 @@
 package com.monsoonandroid.ui;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,12 +11,13 @@ import android.widget.ListView;
 
 import com.monsoonandroid.R;
 import com.monsoonandroid.storage.TaskStorage;
-import com.monsoonandroid.storage.models.Task;
 import com.monsoonandroid.storage.sql.DBNames;
 import com.monsoonandroid.ui.lists.TaskListAdapter;
 
 
 public class TaskListActivity extends BaseActivity implements TaskListAdapter.TaskListListener {
+
+    private static final int REQUEST_ADD_TASK = 11;
 
     private ListView listView;
 
@@ -30,11 +30,7 @@ public class TaskListActivity extends BaseActivity implements TaskListAdapter.Ta
 
         listView = (ListView) findViewById(R.id.listView);
         TaskStorage taskStorage = getTaskStorage();
-        if (taskStorage.numberOfTasks() == 0)
-        {
-            taskStorage.addTask(new Task("Test1", Color.RED, Color.BLACK));
-            taskStorage.addTask(new Task("Test2", Color.YELLOW, Color.BLUE));
-        }
+
 
         TaskListAdapter adapter = new TaskListAdapter(this, taskStorage);
         adapter.setListener(this);
@@ -44,10 +40,27 @@ public class TaskListActivity extends BaseActivity implements TaskListAdapter.Ta
         addTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TaskListActivity.this, AddTaskActivity.class);
-                startActivity(intent);
+                startAddTaskActivity();
             }
         });
+    }
+
+    private void startAddTaskActivity()
+    {
+        Intent intent = new Intent(TaskListActivity.this, AddTaskActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_ADD_TASK)
+        {
+            if (resultCode == RESULT_CANCELED)
+                return;
+
+            
+
+        }
     }
 
     @Override

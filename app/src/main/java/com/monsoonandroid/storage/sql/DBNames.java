@@ -15,4 +15,5 @@ public interface DBNames extends BaseColumns {
     public static final String COLUMN_DESCRIPTION = "description";
     public static final String COLUMN_BCG_COLOR = "color_bcg";
     public static final String COLUMN_BCG_TEXT = "color_text";
+    public static final String COLUMN_TIMESTAMP = "ts";
 }

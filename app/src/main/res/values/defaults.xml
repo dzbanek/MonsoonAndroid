@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="default_colors">
-        <item>@android:color/holo_red_light</item>
-        <item>@android:color/holo_orange_dark</item>
-        <item>@android:color/holo_green_dark</item>
-        <item>@android:color/holo_blue_dark</item>
-        <item>@android:color/holo_purple</item>
-    </array>
+    <string-array name="default_colors">
+        <item>#FFCC0000</item>
+        <item>#FFED5F21</item>
+        <item>#FF5B9C0A</item>
+        <item>#FF0A0D9C</item>
+        <item>#FF990A9C</item>
+    </string-array>
+
+    <string-array name="default_text_colors">
+        <item>#FF770000</item>
+        <item>#FFAD5F21</item>
+        <item>#FF335C00</item>
+        <item>#FF0A0D5C</item>
+        <item>#FF550A9C</item>
+    </string-array>
 
 </resources>

@@ -53,7 +53,7 @@ public class TaskSQLStorage implements TaskStorage {
     @Override
     public List<Task> findAllTasks() {
         try {
-            return getTaskDao().queryForAll();
+            return getTaskDao().queryBuilder().orderBy(DBNames.COLUMN_TIMESTAMP, false).query();
         } catch (SQLException e) {
             e.printStackTrace();
         }

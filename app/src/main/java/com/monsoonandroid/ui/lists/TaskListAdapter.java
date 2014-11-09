@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.monsoonandroid.R;
 import com.monsoonandroid.storage.TaskStorage;
 import com.monsoonandroid.storage.models.Task;
+import com.monsoonandroid.utils.ScreenUtils;
 
 import java.util.List;
 
@@ -81,7 +82,6 @@ public class TaskListAdapter extends BaseAdapter {
         });
 
         viewHolder.txtView.setTextColor(task.getTextColor());
-
         return convertView;
     }
 

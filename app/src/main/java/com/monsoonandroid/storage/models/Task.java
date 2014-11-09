@@ -19,14 +19,17 @@ public class Task {
     @DatabaseField(columnName = DBNames.COLUMN_BCG_COLOR)
     private int backgroundColor;
 
+    @DatabaseField(version = true, columnName = DBNames.COLUMN_TIMESTAMP)
+    private long ts;
+    
+    @DatabaseField(columnName = DBNames.COLUMN_BCG_TEXT)
+    private int textColor;
+
     public Task(String description, int backgroundColor, int textColor) {
         this.description = description;
         this.backgroundColor = backgroundColor;
         this.textColor = textColor;
     }
-
-    @DatabaseField(columnName = DBNames.COLUMN_BCG_TEXT)
-    private int textColor;
 
     Task()
     {
@@ -37,10 +40,6 @@ public class Task {
         return id;
     }
 
-    public int getTextColor() {
-        return textColor;
-    }
-
     public int getBackgroundColor() {
         return backgroundColor;
     }
@@ -49,4 +48,7 @@ public class Task {
         return description;
     }
 
+    public int getTextColor() {
+        return textColor;
+    }
 }
