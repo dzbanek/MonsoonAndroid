@@ -10,7 +10,7 @@ import com.monsoonandroid.storage.sql.DBNames;
 @DatabaseTable(tableName = DBNames.TABLE_TASKS)
 public class Task {
 
-    @DatabaseField(columnName = DBNames._ID)
+    @DatabaseField(generatedId = true, columnName = DBNames._ID)
     private long id;
 
     @DatabaseField(columnName = DBNames.COLUMN_DESCRIPTION)
@@ -18,6 +18,12 @@ public class Task {
 
     @DatabaseField(columnName = DBNames.COLUMN_BCG_COLOR)
     private int backgroundColor;
+
+    public Task(String description, int backgroundColor, int textColor) {
+        this.description = description;
+        this.backgroundColor = backgroundColor;
+        this.textColor = textColor;
+    }
 
     @DatabaseField(columnName = DBNames.COLUMN_BCG_TEXT)
     private int textColor;
@@ -30,4 +36,17 @@ public class Task {
     public long getID() {
         return id;
     }
+
+    public int getTextColor() {
+        return textColor;
+    }
+
+    public int getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
 }

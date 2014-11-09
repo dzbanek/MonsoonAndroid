@@ -12,4 +12,5 @@ public interface TaskStorage {
     public long addTask(Task task);
     public int removeTask(long id);
     public List<Task> findAllTasks();
+    public long numberOfTasks();
 }
