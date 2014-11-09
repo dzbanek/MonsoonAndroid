@@ -3,6 +3,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:layout_height="match_parent">
 
     <View
@@ -46,7 +48,7 @@
             android:layout_alignRight="@+id/editText"
             android:layout_alignEnd="@+id/editText" />
 
-        <com.monsoonandroid.ui.ColorSelectorView
+        <com.monsoonandroid.ui.views.ColorSelectorView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_below="@+id/editText"

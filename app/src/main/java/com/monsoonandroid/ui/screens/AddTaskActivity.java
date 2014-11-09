@@ -1,13 +1,17 @@
-package com.monsoonandroid.ui;
+package com.monsoonandroid.ui.screens;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.monsoonandroid.R;
+import com.monsoonandroid.ui.views.ColorSelectorView;
 
 /**
  * Created by piotr on 08/11/14.
@@ -41,11 +45,24 @@ public class AddTaskActivity extends BaseActivity {
         findViewById(R.id.viewDim).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                if (editText.hasFocus())
+                {
+                    editText.clearFocus();
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+                } else {
+                    onBackPressed();
+                }
             }
         });
 
-        textColors = getResources().getIntArray(R.array.default_text_colors);
+        String[] textColorsAsText = getResources().getStringArray(R.array.default_text_colors);
+        this.textColors = new int[textColorsAsText.length];
+
+        for (int i = 0; i < textColorsAsText.length; i++)
+        {
+            textColors[i] = Color.parseColor(textColorsAsText[i]);
+        }
     }
 
     @Override

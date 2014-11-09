@@ -1,4 +1,4 @@
-package com.monsoonandroid.ui;
+package com.monsoonandroid.ui.screens;
 
 import android.app.Activity;
 

@@ -1,4 +1,4 @@
-package com.monsoonandroid.ui;
+package com.monsoonandroid.ui.views;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -56,12 +56,12 @@ public class ColorSelectorView extends FrameLayout {
             return;
 
         View.inflate(getContext(), R.layout.view_color_selector, this);
-        createRadioButton();
+        createRadioButtons();
     }
 
-    private void createRadioButton() {
+    private void createRadioButtons() {
         this.radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        String[] colors = getResources().getStringArray(R.array.default_colors);
+        String[] colors = getResources().getStringArray(R.array.default_background_colors);
 
         final RadioButton[] rb = new RadioButton[colors.length];
         this.colors = new int[colors.length];
@@ -76,7 +76,6 @@ public class ColorSelectorView extends FrameLayout {
 
         for(int i=0; i<colors.length; i++){
             rb[i]  = new RadioButton(getContext());
-            //rb[i].setGravity(Gravity.CENTER);
             rb[i].setLayoutParams(params);
             rb[i].setId(i);
             StateListDrawable states = new StateListDrawable();
@@ -85,7 +84,6 @@ public class ColorSelectorView extends FrameLayout {
             this.colors[i] = color;
             colorChecked = new ColorDrawable(color);
             colorUnchecked = new ColorDrawable(ScreenUtils.adjustAlpha(color, 0.25f));
-            //colorUnchecked.setAlpha(0);
 
             states.addState(new int[] {android.R.attr.state_checked}, colorChecked);
             states.addState(new int[]{}, colorUnchecked);

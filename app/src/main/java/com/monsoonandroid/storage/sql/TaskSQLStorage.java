@@ -7,7 +7,7 @@ import com.monsoonandroid.storage.TaskStorage;
 import com.monsoonandroid.storage.models.Task;
 
 import java.sql.SQLException;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,7 +57,7 @@ public class TaskSQLStorage implements TaskStorage {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Collections.emptyList();
+        return new ArrayList<Task>();
     }
 
     @Override

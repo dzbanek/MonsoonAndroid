@@ -1,8 +1,14 @@
 package com.monsoonandroid.storage.models;
 
+import android.content.Intent;
+
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.monsoonandroid.storage.sql.DBNames;
+import com.monsoonandroid.ui.screens.AddTaskActivity;
+
+import java.util.Date;
 
 /**
  * Created by piotr on 08/11/14.
@@ -19,11 +25,19 @@ public class Task {
     @DatabaseField(columnName = DBNames.COLUMN_BCG_COLOR)
     private int backgroundColor;
 
-    @DatabaseField(version = true, columnName = DBNames.COLUMN_TIMESTAMP)
-    private long ts;
+    @DatabaseField(version = true, columnName = DBNames.COLUMN_TIMESTAMP, dataType = DataType.DATE)
+    private Date ts;
     
     @DatabaseField(columnName = DBNames.COLUMN_BCG_TEXT)
     private int textColor;
+
+    public static Task fromIntentExtras(Intent intent)
+    {
+        String desc = intent.getStringExtra(AddTaskActivity.ARG_TEXT);
+        int txtColor = intent.getIntExtra(AddTaskActivity.ARG_TXT_COLOR, 0);
+        int bcgColor = intent.getIntExtra(AddTaskActivity.ARG_BCG_COLOR, 0);
+        return new Task(desc, bcgColor, txtColor);
+    }
 
     public Task(String description, int backgroundColor, int textColor) {
         this.description = description;

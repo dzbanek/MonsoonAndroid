@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="default_colors">
+    <string-array name="default_background_colors">
         <item>#FFCC0000</item>
         <item>#FFED5F21</item>
         <item>#FF5B9C0A</item>
