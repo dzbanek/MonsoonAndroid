@@ -13,15 +13,26 @@ import com.monsoonandroid.storage.sql.TaskSQLStorage;
 public class BaseActivity extends Activity {
 
     private TaskStorage taskStorage;
+    private SQLDatabaseHelper dbHelper;
 
     protected TaskStorage getTaskStorage()
     {
-        if (taskStorage == null)
+        if (dbHelper == null)
         {
             SQLDatabaseHelper dbHelper = OpenHelperManager.getHelper(this, SQLDatabaseHelper.class);
             this.taskStorage = new TaskSQLStorage(this, dbHelper);
-
+            this.dbHelper = dbHelper;
         }
         return taskStorage;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbHelper != null)
+        {
+            OpenHelperManager.releaseHelper();
+            dbHelper = null;
+        }
     }
 }

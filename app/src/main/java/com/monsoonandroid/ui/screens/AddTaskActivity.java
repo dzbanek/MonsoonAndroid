@@ -25,13 +25,12 @@ public class AddTaskActivity extends BaseActivity {
     public static final String ARG_BCG_COLOR = "arg_color";
     public static final String ARG_TXT_COLOR = "arg_txt_color";
 
-    private int[] textColors;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_add_task);
+
         Button submitButton = (Button) findViewById(R.id.buttonSubmit);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +38,7 @@ public class AddTaskActivity extends BaseActivity {
                 onSubmitClicked();
             }
         });
+
         this.colorSelectorView = (ColorSelectorView) findViewById(R.id.colorSelectorView);
         this.editText = (EditText) findViewById(R.id.editText);
 
@@ -55,14 +55,6 @@ public class AddTaskActivity extends BaseActivity {
                 }
             }
         });
-
-        String[] textColorsAsText = getResources().getStringArray(R.array.default_text_colors);
-        this.textColors = new int[textColorsAsText.length];
-
-        for (int i = 0; i < textColorsAsText.length; i++)
-        {
-            textColors[i] = Color.parseColor(textColorsAsText[i]);
-        }
     }
 
     @Override
@@ -82,9 +74,16 @@ public class AddTaskActivity extends BaseActivity {
         Intent intent = new Intent();
         intent.putExtra(ARG_TEXT, editText.getText().toString());
         intent.putExtra(ARG_BCG_COLOR, colorSelectorView.selectedColor());
-        intent.putExtra(ARG_TXT_COLOR, textColors[colorSelectorView.selectedIndex()]);
+        intent.putExtra(ARG_TXT_COLOR, findTextColor(colorSelectorView.selectedIndex()));
 
         setResult(RESULT_OK, intent);
         finish();
+    }
+
+    private int findTextColor(int backgroundColorIndex)
+    {
+        String[] textColorsAsText = getResources().getStringArray(R.array.default_text_colors);
+
+        return Color.parseColor(textColorsAsText[backgroundColorIndex]);
     }
 }
